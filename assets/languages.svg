@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="528" viewBox="0 0 680 528">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="100%" stop-color="#091224"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#2979ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="680" height="528" rx="14" fill="url(#bgGrad)" stroke="#1a3154" stroke-width="1.5"/>
+  <rect x="0" y="0" width="680" height="3" rx="1.5" fill="url(#accentLine)"/>
+
+  <text x="24" y="34" fill="#f0f7ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+        font-size="18" font-weight="700">Lenguajes por Uso en Repositorios</text>
+  <text x="656" y="33" text-anchor="end" fill="#64b5f6"
+        font-family="Consolas, monospace" font-size="12">@charly525</text>
+  <line x1="24" y1="48" x2="656" y2="48" stroke="#152642" stroke-width="1"/>
+
+  <g transform="translate(0, 68)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#00e5ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">Jupyter Notebook</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#00e5ff">
+      <animate attributeName="width" from="0" to="266.4" dur="0.9s"
+               begin="0.0s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">78.3%</text>
+  </g>
+  <g transform="translate(0, 112)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#2979ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">Makefile</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#2979ff">
+      <animate attributeName="width" from="0" to="37.9" dur="0.9s"
+               begin="0.08s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">11.1%</text>
+  </g>
+  <g transform="translate(0, 156)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#00b0ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">CMake</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#00b0ff">
+      <animate attributeName="width" from="0" to="10.9" dur="0.9s"
+               begin="0.16s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">3.2%</text>
+  </g>
+  <g transform="translate(0, 200)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#64ffda"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">C</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#64ffda">
+      <animate attributeName="width" from="0" to="6.3" dur="0.9s"
+               begin="0.24s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">1.8%</text>
+  </g>
+  <g transform="translate(0, 244)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#448aff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">C++</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#448aff">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.32s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">1.7%</text>
+  </g>
+  <g transform="translate(0, 288)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#18ffff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">VHDL</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#18ffff">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.4s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">1.5%</text>
+  </g>
+  <g transform="translate(0, 332)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#82b1ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">Python</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#82b1ff">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.48s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">1.5%</text>
+  </g>
+  <g transform="translate(0, 376)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#1de9b6"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">Shell</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#1de9b6">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.56s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">0.36%</text>
+  </g>
+  <g transform="translate(0, 420)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#00e5ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">HTML</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#00e5ff">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.64s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">0.23%</text>
+  </g>
+  <g transform="translate(0, 464)">
+    <rect x="24" y="4" width="632" height="36" rx="8"
+          fill="#0c1322" stroke="#182b49" stroke-width="1"/>
+    <circle cx="42" cy="22" r="5" fill="#2979ff"/>
+    <text x="56" y="27" fill="#e6f1ff" font-family="Segoe UI, Ubuntu, Cantarell, sans-serif"
+          font-size="13.5" font-weight="600">PowerShell</text>
+
+    <!-- Barra de fondo -->
+    <rect x="255" y="15" width="340" height="14" rx="7" fill="#132238"/>
+
+    <!-- Barra animada -->
+    <rect x="255" y="15" width="0" height="14" rx="7" fill="#2979ff">
+      <animate attributeName="width" from="0" to="6.0" dur="0.9s"
+               begin="0.72s" fill="freeze"/>
+    </rect>
+
+    <!-- Porcentaje -->
+    <text x="644" y="27" text-anchor="end" fill="#7fdbff"
+          font-family="Consolas, monospace" font-size="13" font-weight="700">0.11%</text>
+  </g>
+</svg>
