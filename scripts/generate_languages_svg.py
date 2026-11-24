@@ -73,16 +73,20 @@ def render_pixel_text(
     text: str,
     x: float,
     y: float,
-    px: float = 2.4,
-    gap: float = 0.6,
+    px: float = 2.0,
+    char_gap: float = 1.6,
     fill: str = "#e6f1ff",
     align: str = "left",
 ) -> str:
+    """
+    Dibuja texto en bloques sólidos de píxeles (sin huecos internos entre píxeles
+    adyacentes) con tamaño configurable.
+    """
     upper = text.upper()
     cols_per_char = 5
-    rows_per_char = 7
-    step_x = (cols_per_char + 1) * (px + gap)
-    total_w = max(0.0, len(upper) * step_x - (px + gap))
+    char_w = cols_per_char * px
+    step_x = char_w + char_gap
+    total_w = max(0.0, len(upper) * step_x - char_gap)
 
     start_x = x
     if align == "right":
@@ -90,6 +94,8 @@ def render_pixel_text(
     elif align == "center":
         start_x = x - total_w / 2.0
 
+    # Pequeño solape de 0.15px evita líneas finas de antialiasing entre píxeles contiguos
+    overlap = 0.15
     rects = []
     for char_idx, ch in enumerate(upper):
         glyph = PIXEL_FONT.get(ch, PIXEL_FONT[" "])
@@ -97,10 +103,11 @@ def render_pixel_text(
         for r_idx, row_bits in enumerate(glyph):
             for c_idx, bit in enumerate(row_bits):
                 if bit == "1":
-                    rx = gx + c_idx * (px + gap)
-                    ry = y + r_idx * (px + gap)
+                    rx = gx + c_idx * px
+                    ry = y + r_idx * px
                     rects.append(
-                        f'<rect x="{rx:.1f}" y="{ry:.1f}" width="{px:.1f}" height="{px:.1f}" fill="{fill}"/>'
+                        f'<rect x="{rx:.2f}" y="{ry:.2f}" '
+                        f'width="{px + overlap:.2f}" height="{px + overlap:.2f}" fill="{fill}"/>'
                     )
     return "\n    ".join(rects)
 
@@ -162,84 +169,84 @@ def build_symbol_svg(lang: str, fallback_color: str) -> str:
 
     if key == "python":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#10233d" stroke="#3776ab" stroke-width="1.2"/>
-        <path d="M13 5.5c-3.2 0-3 1.4-3 1.4v1.7h3.1v.5H8.8c-1.5 0-2.8.9-2.8 2.8s1.1 2.8 2.5 2.8h1.5v-1.3c0-1.4 1.2-2.6 2.6-2.6h2.7c1.2 0 2.2-1 2.2-2.2V7.6c0-1.1-.9-2.1-4.5-2.1zm-1.6 1.2a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4z" fill="#4b8bbe"/>
-        <path d="M13 20.5c3.2 0 3-1.4 3-1.4v-1.7h-3.1v-.5h4.3c1.5 0 2.8-.9 2.8-2.8s-1.1-2.8-2.5-2.8H16v1.3c0 1.4-1.2 2.6-2.6 2.6h-2.7c-1.2 0-2.2 1-2.2 2.2v1.9c0 1.1.9 2.1 4.5 2.1zm1.6-1.2a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4z" fill="#ffd43b"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#10233d" stroke="#3776ab" stroke-width="1.2"/>
+        <path d="M12 4.8c-2.9 0-2.7 1.3-2.7 1.3v1.5h2.8v.5H8.1c-1.4 0-2.5.8-2.5 2.5s1 2.5 2.3 2.5h1.3v-1.2c0-1.3 1.1-2.3 2.4-2.3h2.4c1.1 0 2-.9 2-2V6.7c0-1-.8-1.9-4.1-1.9zm-1.4 1.1a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2z" fill="#4b8bbe"/>
+        <path d="M12 19.2c2.9 0 2.7-1.3 2.7-1.3v-1.5h-2.8v-.5h4c1.4 0 2.5-.8 2.5-2.5s-1-2.5-2.3-2.5h-1.3v1.2c0 1.3-1.1 2.3-2.4 2.3H9.9c-1.1 0-2 .9-2 2v1.7c0 1 .8 1.9 4.1 1.9zm1.4-1.1a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2z" fill="#ffd43b"/>
         """
 
     if key == "c":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0d2238" stroke="#659ad2" stroke-width="1.2"/>
-        <path d="M17.2 8.7A5.2 5.2 0 1 0 17.2 17.3" fill="none" stroke="#659ad2" stroke-width="2.6" stroke-linecap="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0d2238" stroke="#659ad2" stroke-width="1.2"/>
+        <path d="M15.8 8.2A4.8 4.8 0 1 0 15.8 15.8" fill="none" stroke="#659ad2" stroke-width="2.4" stroke-linecap="round"/>
         """
 
     if key in ("c++", "cpp"):
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0d2238" stroke="#0086d4" stroke-width="1.2"/>
-        <path d="M12.5 9.2a4.4 4.4 0 1 0 0 7.6" fill="none" stroke="#4fc3f7" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M15.5 11.5v3m-1.5-1.5h3M20 11.5v3m-1.5-1.5h3" stroke="#00e5ff" stroke-width="1.6" stroke-linecap="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0d2238" stroke="#0086d4" stroke-width="1.2"/>
+        <path d="M11.5 8.6a4 4 0 1 0 0 6.8" fill="none" stroke="#4fc3f7" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14.2 10.6v2.8m-1.4-1.4h2.8M18.3 10.6v2.8m-1.4-1.4h2.8" stroke="#00e5ff" stroke-width="1.5" stroke-linecap="round"/>
         """
 
     if key == "vhdl":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0b2433" stroke="#00e5ff" stroke-width="1.2"/>
-        <rect x="8.5" y="8.5" width="9" height="9" rx="1.5" fill="none" stroke="#00e5ff" stroke-width="1.8"/>
-        <path d="M5.5 10.5h3m-3 5h3m9-5h3m-3 5h3M10.5 5.5v3m5-3v3m-5 9v3m5-3v3" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0b2433" stroke="#00e5ff" stroke-width="1.2"/>
+        <rect x="7.8" y="7.8" width="8.4" height="8.4" rx="1.4" fill="none" stroke="#00e5ff" stroke-width="1.7"/>
+        <path d="M5 9.8h2.8m-2.8 4.4h2.8m8.4-4.4h2.8m-2.8 4.4h2.8M9.8 5v2.8m4.4-2.8v2.8m-4.4 8.4v2.8m4.4-2.8v2.8" stroke="#38bdf8" stroke-width="1.4" stroke-linecap="round"/>
         """
 
     if key in ("shell", "bash", "zsh"):
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0b2624" stroke="#2dd4bf" stroke-width="1.2"/>
-        <path d="M7.5 9.5l4 3.5-4 3.5M13.5 17h5" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0b2624" stroke="#2dd4bf" stroke-width="1.2"/>
+        <path d="M6.8 8.8l3.6 3.2-3.6 3.2M12.4 15.5h4.6" fill="none" stroke="#2dd4bf" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
         """
 
     if key == "html":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#291610" stroke="#f97316" stroke-width="1.2"/>
-        <path d="M7.5 7h11l-1 10.5-4.5 1.5-4.5-1.5L7.5 7z" fill="none" stroke="#fb923c" stroke-width="1.6" stroke-linejoin="round"/>
-        <path d="M10.2 11h5.6l-.3 3.2-2.7.8-2.7-.8" fill="none" stroke="#fdba74" stroke-width="1.4" stroke-linecap="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#291610" stroke="#f97316" stroke-width="1.2"/>
+        <path d="M6.8 6.5h10.4l-.9 9.6-4.3 1.4-4.3-1.4-.9-9.6z" fill="none" stroke="#fb923c" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M9.3 10.2h5.4l-.2 2.9-2.5.7-2.5-.7" fill="none" stroke="#fdba74" stroke-width="1.3" stroke-linecap="round"/>
         """
 
     if "jupyter" in key:
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#27170d" stroke="#fb923c" stroke-width="1.2"/>
-        <circle cx="13" cy="13" r="4.2" fill="none" stroke="#fb923c" stroke-width="1.8"/>
-        <circle cx="7.5" cy="7.5" r="1.4" fill="#fdba74"/>
-        <circle cx="18.5" cy="18.5" r="1.4" fill="#fdba74"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#27170d" stroke="#fb923c" stroke-width="1.2"/>
+        <circle cx="12" cy="12" r="3.8" fill="none" stroke="#fb923c" stroke-width="1.7"/>
+        <circle cx="6.9" cy="6.9" r="1.3" fill="#fdba74"/>
+        <circle cx="17.1" cy="17.1" r="1.3" fill="#fdba74"/>
         """
 
     if key == "makefile":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0f213a" stroke="#60a5fa" stroke-width="1.2"/>
-        <path d="M7.5 16.5l8.5-8.5 2 2-8.5 8.5-2.5.5.5-2.5z" fill="none" stroke="#60a5fa" stroke-width="1.7" stroke-linejoin="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0f213a" stroke="#60a5fa" stroke-width="1.2"/>
+        <path d="M6.8 15.2l7.8-7.8 1.9 1.9-7.8 7.8-2.3.4.4-2.2z" fill="none" stroke="#60a5fa" stroke-width="1.6" stroke-linejoin="round"/>
         """
 
     if key == "cmake":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0b2333" stroke="#00e5ff" stroke-width="1.2"/>
-        <polygon points="13,6.5 19,18.5 7,18.5" fill="none" stroke="#00e5ff" stroke-width="1.8" stroke-linejoin="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0b2333" stroke="#00e5ff" stroke-width="1.2"/>
+        <polygon points="12,6 17.5,17 6.5,17" fill="none" stroke="#00e5ff" stroke-width="1.7" stroke-linejoin="round"/>
         """
 
     if key == "powershell":
         return """
-        <rect x="1" y="1" width="24" height="24" rx="5" fill="#0c1b36" stroke="#38bdf8" stroke-width="1.2"/>
-        <path d="M8 9.5l4.5 3.5L8 16.5M13.5 17h4.5" fill="none" stroke="#7dd3fc" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#0c1b36" stroke="#38bdf8" stroke-width="1.2"/>
+        <path d="M7.2 8.8l4.1 3.2-4.1 3.2M12.5 15.5h4.2" fill="none" stroke="#7dd3fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         """
 
     return f"""
-    <rect x="1" y="1" width="24" height="24" rx="5" fill="#0d1b2e" stroke="{fallback_color}" stroke-width="1.2"/>
-    <path d="M9.5 10L6.5 13l3 3M16.5 10l3 3-3 3M14 8.5l-2 9" fill="none" stroke="{fallback_color}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="1" y="1" width="22" height="22" rx="5" fill="#0d1b2e" stroke="{fallback_color}" stroke-width="1.2"/>
+    <path d="M8.8 9.2L6 12l2.8 2.8M15.2 9.2L18 12l-2.8 2.8M13 7.8l-1.8 8.4" fill="none" stroke="{fallback_color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
     """
 
 
 def build_svg(items):
     width = 760
-    header_height = 94
-    row_height = 50
-    padding_x = 24
-    bar_x = 310
-    bar_max_width = 325
-    bottom_padding = 24
+    header_height = 80
+    row_height = 44
+    padding_x = 22
+    bar_x = 278
+    bar_max_width = 368
+    bottom_padding = 20
 
     count = max(len(items), 1)
     height = header_height + (count * row_height) + bottom_padding
@@ -251,18 +258,18 @@ def build_svg(items):
         seg_w = max(2.0, (pct / 100.0) * total_bar_w)
         color = PALETTE[idx % len(PALETTE)]
         stacked_segments.append(
-            f'<rect x="{curr_x:.1f}" y="58" width="0" height="8" rx="2" fill="{color}">'
+            f'<rect x="{curr_x:.1f}" y="48" width="0" height="7" rx="2" fill="{color}">'
             f'<animate attributeName="width" from="0" to="{seg_w:.1f}" dur="0.85s" fill="freeze"/>'
             f"</rect>"
         )
         curr_x += seg_w
 
     title_pixels = render_pixel_text(
-        "LENGUAJES POR USO",
+        "LENGUAJES",
         x=padding_x,
         y=20,
-        px=2.8,
-        gap=0.7,
+        px=2.3,
+        char_gap=1.8,
         fill="#00e5ff",
         align="left",
     )
@@ -270,8 +277,8 @@ def build_svg(items):
         f"@{USERNAME}",
         x=width - padding_x,
         y=22,
-        px=2.2,
-        gap=0.6,
+        px=1.55,
+        char_gap=1.2,
         fill="#60a5fa",
         align="right",
     )
@@ -281,41 +288,41 @@ def build_svg(items):
         y = header_height + idx * row_height
         color = PALETTE[idx % len(PALETTE)]
         target_w = max(8.0, (pct / 100.0) * bar_max_width)
-        delay = round(idx * 0.07, 2)
+        delay = round(idx * 0.06, 2)
         pct_text = f"{pct:.1f}%" if pct >= 1.0 else f"{pct:.2f}%"
         symbol_inner = build_symbol_svg(lang, color)
 
         lang_pixels = render_pixel_text(
             lang,
-            x=padding_x + 44,
+            x=padding_x + 38,
             y=14,
-            px=2.1,
-            gap=0.5,
+            px=1.65,
+            char_gap=1.3,
             fill="#eef6ff",
             align="left",
         )
         pct_pixels = render_pixel_text(
             pct_text,
-            x=width - padding_x - 14,
+            x=width - padding_x - 12,
             y=14,
-            px=2.1,
-            gap=0.5,
+            px=1.65,
+            char_gap=1.3,
             fill="#00e5ff",
             align="right",
         )
 
         row = f"""  <g transform="translate(0, {y})">
-    <rect x="{padding_x}" y="3" width="{width - padding_x * 2}" height="42" rx="6"
+    <rect x="{padding_x}" y="2" width="{width - padding_x * 2}" height="38" rx="6"
           fill="#0b1322" stroke="#182b49" stroke-width="1"/>
 
-    <g transform="translate({padding_x + 10}, 11)">
+    <g transform="translate({padding_x + 9}, 9)">
       {symbol_inner.strip()}
     </g>
 
     {lang_pixels}
 
-    <rect x="{bar_x}" y="18" width="{bar_max_width}" height="12" rx="3" fill="#132238"/>
-    <rect x="{bar_x}" y="18" width="0" height="12" rx="3" fill="{color}">
+    <rect x="{bar_x}" y="16" width="{bar_max_width}" height="10" rx="2.5" fill="#132238"/>
+    <rect x="{bar_x}" y="16" width="0" height="10" rx="2.5" fill="{color}">
       <animate attributeName="width" from="0" to="{target_w:.1f}" dur="0.9s"
                begin="{delay}s" fill="freeze"/>
     </rect>
@@ -328,9 +335,9 @@ def build_svg(items):
         empty_px = render_pixel_text(
             "SIN LENGUAJES",
             x=padding_x,
-            y=header_height + 16,
-            px=2.2,
-            gap=0.6,
+            y=header_height + 14,
+            px=1.7,
+            char_gap=1.3,
             fill="#8da4c4",
         )
         rows_svg.append(f"  <g>{empty_px}</g>")
@@ -353,7 +360,7 @@ def build_svg(items):
   {title_pixels}
   {user_pixels}
 
-  <rect x="{padding_x}" y="58" width="{total_bar_w}" height="8" rx="2" fill="#101d33"/>
+  <rect x="{padding_x}" y="48" width="{total_bar_w}" height="7" rx="2" fill="#101d33"/>
   {"".join(stacked_segments)}
 
 {chr(10).join(rows_svg)}
