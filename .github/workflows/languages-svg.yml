@@ -45,7 +45,7 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config user.name "charly525"
-          git config user.email "charly525@users.noreply.github.com"
+          git config user.email "carolhinareal@javeriana.edu.co"
           git add assets/languages.svg assets/stats.svg
           if git diff --staged --quiet; then
             echo "No changes to commit."
