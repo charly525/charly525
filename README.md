@@ -6,6 +6,10 @@
 <img src="https://readme-typing-svg.demolab.com?font=Press+Start+2P&size=20&pause=1000&color=00BFFF&center=true&vCenter=true&width=420&lines=Hi%2C+I'm+Caro"/>
 </p>
 
+<!-- STATS_SVG:START -->
+![GitHub Stats](./assets/stats.svg)
+<!-- STATS_SVG:END -->
+
 <!-- LANGS_SVG:START -->
 ![Lenguajes de programación](./assets/languages.svg)
 <!-- LANGS_SVG:END -->
