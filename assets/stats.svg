@@ -1001,20 +1001,19 @@
     <rect x="396.75" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="398.50" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="400.25" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="405.05" y="1.00" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="406.80" y="1.00" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="408.55" y="1.00" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="410.30" y="1.00" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="412.05" y="2.75" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="412.05" y="4.50" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="406.80" y="6.25" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="408.55" y="6.25" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="408.55" y="2.75" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="410.30" y="2.75" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="406.80" y="4.50" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="410.30" y="4.50" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="405.05" y="6.25" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="410.30" y="6.25" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="405.05" y="8.00" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="406.80" y="8.00" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="408.55" y="8.00" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="410.30" y="8.00" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="412.05" y="8.00" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="412.05" y="9.75" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="405.05" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="406.80" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
-    <rect x="408.55" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
+    <rect x="410.30" y="9.75" width="1.90" height="1.90" fill="#00e5ff"/>
     <rect x="410.30" y="11.50" width="1.90" height="1.90" fill="#00e5ff"/>
   </g>
   <g transform="translate(24, 138)">
